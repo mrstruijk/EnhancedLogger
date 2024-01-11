@@ -28,6 +28,7 @@ This Unity project provides a flexible and customizable logging utility named `L
 
 ## Downsides
 - The first lines in the Console are reserved for the Log utility. This means that the first lines of your own logs will be pushed down. Not so handy when you want to click to the code that generated the log message. 
+- You need to copy the Demo files into your normal Asset folder to use the Demo scene. See [this explanation here as to why](https://forum.unity.com/threads/it-is-not-allowed-to-open-a-scene-in-a-read-only-package-why.1148036/).
 
 ## Installation
 
