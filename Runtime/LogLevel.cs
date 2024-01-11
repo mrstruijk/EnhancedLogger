@@ -1,8 +1,8 @@
 namespace mrstruijk.EnhancedLogger
 {
     /// <summary>
-    ///     Debug is by default the lowest shown log level in the Editor and Development Build.
-    ///     Change this in the menu Logging, the Scene view, or in the DevelopmentBuildLogLevelSetter script.
+    ///     Debug is by default the shown log level in the Editor and Development Build, thereby including also Error and
+    ///     Warning logs.
     /// </summary>
     public enum LogLevel
     {

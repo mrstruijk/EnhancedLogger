@@ -1,11 +1,7 @@
-
 using mrstruijk.EnhancedLogger;
-
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
-
-
 
 
 [TestFixture]
@@ -27,7 +23,7 @@ public class ShowOwnLogs
 
         var objectName = $"<color={color}>[{mockObject.name}]{prefix}</color> : ";
 
-        LogAssert.Expect(UnityEngine.LogType.Log, $"{objectName}{message}\n");
+        LogAssert.Expect(LogType.Log, $"{objectName}{message}\n");
     }
 
 
@@ -47,7 +43,7 @@ public class ShowOwnLogs
 
         var objectName = $"<color={color}>[{mockObject.name}]{prefix}</color> : ";
 
-        LogAssert.Expect(UnityEngine.LogType.Log, $"{objectName}{message}\n");
+        LogAssert.Expect(LogType.Log, $"{objectName}{message}\n");
     }
 
 
@@ -67,7 +63,7 @@ public class ShowOwnLogs
 
         var objectName = $"<color={color}>[{mockObject.name}]{prefix}</color> : ";
 
-        LogAssert.Expect(UnityEngine.LogType.Log, $"{objectName}{message}\n");
+        LogAssert.Expect(LogType.Log, $"{objectName}{message}\n");
     }
 
 
@@ -87,7 +83,7 @@ public class ShowOwnLogs
 
         var objectName = $"<color={color}>[{mockObject.name}]{prefix}</color> : ";
 
-        LogAssert.Expect(UnityEngine.LogType.Log, $"{objectName}{message}\n");
+        LogAssert.Expect(LogType.Log, $"{objectName}{message}\n");
     }
 
 
@@ -107,7 +103,7 @@ public class ShowOwnLogs
 
         var objectName = $"<color={color}>[{mockObject.name}]{prefix}</color> : ";
 
-        LogAssert.Expect(UnityEngine.LogType.Log, $"{objectName}{message}\n");
+        LogAssert.Expect(LogType.Log, $"{objectName}{message}\n");
     }
 }
 
@@ -115,7 +111,6 @@ public class ShowOwnLogs
 [TestFixture]
 public class ShowHigherLogs
 {
-
     [Test]
     public void Warning_ShowsErrorLogs()
     {
@@ -132,8 +127,9 @@ public class ShowHigherLogs
 
         var objectName = $"<color={color}>[{mockObject.name}]{prefix}</color> : ";
 
-        LogAssert.Expect(UnityEngine.LogType.Log, $"{objectName}{message}\n");
+        LogAssert.Expect(LogType.Log, $"{objectName}{message}\n");
     }
+
 
     [Test]
     public void Debug_ShowsWarningLogs()
@@ -151,7 +147,7 @@ public class ShowHigherLogs
 
         var objectName = $"<color={color}>[{mockObject.name}]{prefix}</color> : ";
 
-        LogAssert.Expect(UnityEngine.LogType.Log, $"{objectName}{message}\n");
+        LogAssert.Expect(LogType.Log, $"{objectName}{message}\n");
     }
 
 
@@ -170,7 +166,7 @@ public class ShowHigherLogs
         var errorColor = Log.GetColor(LogLevel.Error);
         var errorObjectName = $"<color={errorColor}>[{mockObject.name}]{errorPrefix}</color> : ";
 
-        LogAssert.Expect(UnityEngine.LogType.Log, $"{errorObjectName}{errorMessage}\n");
+        LogAssert.Expect(LogType.Log, $"{errorObjectName}{errorMessage}\n");
 
         var successMessage = "This is a success message, which should be logged, because CurrentLogLevel is set to Success.";
         mockObject.Success(successMessage);
@@ -179,7 +175,7 @@ public class ShowHigherLogs
         var successColor = Log.GetColor(LogLevel.Success);
         var successObjectName = $"<color={successColor}>[{mockObject.name}]{successPrefix}</color> : ";
 
-        LogAssert.Expect(UnityEngine.LogType.Log, $"{successObjectName}{successMessage}\n");
+        LogAssert.Expect(LogType.Log, $"{successObjectName}{successMessage}\n");
     }
 
 
@@ -198,7 +194,7 @@ public class ShowHigherLogs
         var warningColor = Log.GetColor(LogLevel.Warning);
         var warningObjectName = $"<color={warningColor}>[{mockObject.name}]{warningPrefix}</color> : ";
 
-        LogAssert.Expect(UnityEngine.LogType.Log, $"{warningObjectName}{warningMessage}\n");
+        LogAssert.Expect(LogType.Log, $"{warningObjectName}{warningMessage}\n");
 
         var debugMessage = "This is a debug message, which should be logged, because CurrentLogLevel is set to Info.";
         mockObject.Debug(debugMessage);
@@ -207,7 +203,7 @@ public class ShowHigherLogs
         var debugColor = Log.GetColor(LogLevel.Debug);
         var debugObjectName = $"<color={debugColor}>[{mockObject.name}]{debugPrefix}</color> : ";
 
-        LogAssert.Expect(UnityEngine.LogType.Log, $"{debugObjectName}{debugMessage}\n");
+        LogAssert.Expect(LogType.Log, $"{debugObjectName}{debugMessage}\n");
 
         var successMessage = "This is a success message, which should be logged, because CurrentLogLevel is set to Info.";
         mockObject.Success(successMessage);
@@ -216,7 +212,7 @@ public class ShowHigherLogs
         var successColor = Log.GetColor(LogLevel.Success);
         var successObjectName = $"<color={successColor}>[{mockObject.name}]{successPrefix}</color> : ";
 
-        LogAssert.Expect(UnityEngine.LogType.Log, $"{successObjectName}{successMessage}\n");
+        LogAssert.Expect(LogType.Log, $"{successObjectName}{successMessage}\n");
 
         var infoMessage = "This is an info message, which should be logged, because CurrentLogLevel is set to Info.";
         mockObject.Info(infoMessage);
@@ -225,7 +221,7 @@ public class ShowHigherLogs
         var infoColor = Log.GetColor(LogLevel.Info);
         var infoObjectName = $"<color={infoColor}>[{mockObject.name}]{infoPrefix}</color> : ";
 
-        LogAssert.Expect(UnityEngine.LogType.Log, $"{infoObjectName}{infoMessage}\n");
+        LogAssert.Expect(LogType.Log, $"{infoObjectName}{infoMessage}\n");
     }
 }
 
@@ -243,10 +239,10 @@ public class SuppressLowerLogs
 
         var message = "This is a Warning message.";
         mockObject.Warning(message);
-        
+
         LogAssert.NoUnexpectedReceived();
     }
-    
+
 
     [Test]
     public void Debug_SuppressesSuccessAndInfoLogs()
@@ -255,13 +251,13 @@ public class SuppressLowerLogs
 
         var mockName = string.Concat("MockObject_", Random.Range(0, 100));
         var mockObject = new GameObject(mockName);
-        
+
         mockObject.Success("This is a success message.");
         mockObject.Info("This is an info message.");
-        
+
         LogAssert.NoUnexpectedReceived();
     }
-    
+
 
     [Test]
     public void None_SuppressesAllLogs()

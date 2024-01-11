@@ -6,7 +6,8 @@ namespace mrstruijk.EnhancedLogger
 {
     /// <summary>
     ///     Creates buttons in the Scene view to change the log level
-    ///     Also adds menu items to change the log level
+    ///     The current log level is shown in Green in the Scene view
+    ///     Also adds menu items to change the log level (see the Logging menu)
     ///     Log level is persistent from Play mode to Edit mode and vice versa
     /// </summary>
     [ExecuteAlways]

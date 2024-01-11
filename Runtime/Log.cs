@@ -1,5 +1,3 @@
-
-
 using UnityEngine;
 
 
@@ -7,12 +5,11 @@ namespace mrstruijk.EnhancedLogger
 {
     /// <summary>
     ///     This is a simple logger that can be used to log different types of messages
-    ///     It allows me to control the output of the logs in the editor and in the development build,
+    ///     It allows you to control the output of the logs in the editor and in the development build,
     ///     while also allowing me to persist the log level between editor sessions.
-    ///     The log level is set in the menu Logging, or via the buttons in the Scene view (see LogButtons.cs)
-    ///     The log level is set to the development build log level when the game is built as a development build (see
-    ///     DevelopmentBuildLogLevelSetter.cs)
-    ///     Logs are not shown in the release build
+    ///     Change the current log level in the Scene view, the Logging menu, with the DevelopmentBuildLogLevelSetter.cs, or
+    ///     even by calling Log.CurrentLogLevel = LogLevel.XXXX from anywhere in your code.
+    ///     Logs are not shown in the release build, thereby hopefully reducing the cost of logging.
     ///     Adapted from DrowsyFoxDev: https://www.youtube.com/watch?v=lRqR4YF8iQs
     /// </summary>
     public static class Log
@@ -148,8 +145,8 @@ namespace mrstruijk.EnhancedLogger
 
 
         /// <summary>
-        ///     Designed for temporary debug messages. The Logger defaults to show Debug messages in the editor / development
-        ///     build.
+        ///     Designed for temporary debug messages.
+        ///     The Logger defaults to show Debug messages in the editor / development build.
         /// </summary>
         /// <param name="caller"></param>
         /// <param name="message"></param>
@@ -160,8 +157,8 @@ namespace mrstruijk.EnhancedLogger
 
 
         /// <summary>
-        ///     Designed for temporary debug messages. The Logger defaults to show Debug messages in the editor / development
-        ///     build.
+        ///     Designed for temporary debug messages.
+        ///     The Logger defaults to show Debug messages in the editor / development build.
         /// </summary>
         /// <param name="caller"></param>
         /// <param name="message"></param>
@@ -172,8 +169,8 @@ namespace mrstruijk.EnhancedLogger
 
 
         /// <summary>
-        ///     Designed to note when something does work
-        ///     By default these messages are not shown in the editor / development build.
+        ///     Designed to note when something does work. Hurray!
+        ///     By default these messages are not shown in the editor / development build, because the Log defaults to Debug.
         /// </summary>
         /// <param name="caller"></param>
         /// <param name="message"></param>
@@ -184,8 +181,8 @@ namespace mrstruijk.EnhancedLogger
 
 
         /// <summary>
-        ///     Designed to note when something does work
-        ///     By default these messages are not shown in the editor / development build.
+        ///     Designed to note when something does work. Party.
+        ///     By default these messages are not shown in the editor / development build, because the Log defaults to Debug.
         /// </summary>
         /// <param name="caller"></param>
         /// <param name="message"></param>
@@ -197,7 +194,7 @@ namespace mrstruijk.EnhancedLogger
 
         /// <summary>
         ///     Designed for the lowest level of persistent Logging. Only shown in Full / Info logging mode
-        ///     By default these messages are not shown in the editor / development build.
+        ///     By default these messages are not shown in the editor / development build, because the Log defaults to Debug.
         /// </summary>
         /// <param name="caller"></param>
         /// <param name="message"></param>
@@ -209,7 +206,7 @@ namespace mrstruijk.EnhancedLogger
 
         /// <summary>
         ///     Designed for the lowest level of persistent Logging. Only shown in Full / Info logging mode
-        ///     By default these messages are not shown in the editor / development build.
+        ///     By default these messages are not shown in the editor / development build, because the Log defaults to Debug.
         /// </summary>
         /// <param name="caller"></param>
         /// <param name="message"></param>

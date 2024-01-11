@@ -5,7 +5,7 @@ using UnityEngine;
 namespace mrstruijk.EnhancedLogger
 {
     /// <summary>
-    ///     This makes the Current Log Level persist between editor sessions
+    ///     This class makes the Current Log Level persist between Play sessions.
     /// </summary>
     public static class LogLevelEditorPrefs
     {
