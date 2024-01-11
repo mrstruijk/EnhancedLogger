@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 
 
-namespace mrstruijk.Utils
+namespace mrstruijk.EnhancedLogger
 {
     /// <summary>
     ///     This makes the Current Log Level persist between editor sessions

@@ -1,10 +1,10 @@
 {
-    "name": "EnhancedLogger.RuntimeTests",
+    "name": "mrstruijk.EnhancedLogger.RuntimeTests",
     "rootNamespace": "",
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
-        "mrstruijk"
+        "mrstruijk.EnhancedLogger"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

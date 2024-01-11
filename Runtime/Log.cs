@@ -1,8 +1,9 @@
-using mrstruijk.Extensions;
+
+
 using UnityEngine;
 
 
-namespace mrstruijk.Utils
+namespace mrstruijk.EnhancedLogger
 {
     /// <summary>
     ///     This is a simple logger that can be used to log different types of messages
@@ -88,7 +89,7 @@ namespace mrstruijk.Utils
             var prefix = GetPrefix(logLevel);
             var color = GetColor(logLevel);
 
-            if (prefix.ContainsText())
+            if (!string.IsNullOrEmpty(prefix))
             {
                 objectName = string.Concat(objectName, prefix);
             }

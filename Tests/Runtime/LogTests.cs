@@ -1,7 +1,11 @@
-using mrstruijk.Utils;
+
+using mrstruijk.EnhancedLogger;
+
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
+
+
 
 
 [TestFixture]

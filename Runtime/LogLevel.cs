@@ -1,4 +1,4 @@
-namespace mrstruijk.Utils
+namespace mrstruijk.EnhancedLogger
 {
     /// <summary>
     ///     Debug is by default the lowest shown log level in the Editor and Development Build.

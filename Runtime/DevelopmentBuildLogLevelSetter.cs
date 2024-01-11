@@ -1,7 +1,9 @@
-using mrstruijk.Utils;
+using mrstruijk.EnhancedLogger;
 using UnityEngine;
 
 
+namespace mrstruijk.EnhancedLogger
+{
 /// <summary>
 ///     The log level is set to the development build log level when the game is built as a development build
 ///     No changes to the Editor Log Level are made when the game is build as a release build
@@ -24,4 +26,8 @@ public class DevelopmentBuildLogLevelSetter : MonoBehaviour
             Log.CurrentLogLevel = m_developmentBuildLogLevel;
         #endif
     }
+}
+
+
+    
 }

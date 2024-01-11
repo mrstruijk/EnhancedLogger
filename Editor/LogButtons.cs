@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 
 
-namespace mrstruijk.Utils
+namespace mrstruijk.EnhancedLogger
 {
     /// <summary>
     ///     Creates buttons in the Scene view to change the log level
