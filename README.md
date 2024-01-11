@@ -47,8 +47,8 @@ If you prefer manual installation, clone or download [the repository](https://gi
 
 ## Usage
 
-1. Add the `Log.cs` script to your Unity project.
-2. Use the `Log` class to log messages in your scripts.
+1. Reference the mrstruijk.EnhancedLogger namespace.
+2. Use the inteded level for your log, such as `this.Success("Some log");` to log that message in the console.
 
 ```csharp
 using UnityEngine;
