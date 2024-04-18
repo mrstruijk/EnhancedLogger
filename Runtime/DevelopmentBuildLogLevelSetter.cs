@@ -17,11 +17,12 @@ namespace mrstruijk.EnhancedLogger
         }
 
 
-        // ReSharper disable once MemberCanBeMadeStatic.Local
         private void SetLogLevelInDevelopmentBuild()
         {
             #if DEVELOPMENT_BUILD
             Log.CurrentLogLevel = m_developmentBuildLogLevel;
+            #else
+            Log.Info("Our current loglevel is", Log.CurrentLogLevel, "and we're not changing that to", m_developmentBuildLogLevel);
             #endif
         }
     }
