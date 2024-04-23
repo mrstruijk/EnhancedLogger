@@ -82,7 +82,25 @@ namespace mrstruijk.EnhancedLogger
                 return;
             }
 
-            var objectName = caller is Object unityObject ? "[" + unityObject.name + "]" : "[" + caller + "]";
+            var objectName = "";
+
+            if (caller is Object unityObject)
+            {
+                if (unityObject == null || string.IsNullOrEmpty(unityObject.name))
+                {
+                    UnityEngine.Debug.LogWarningFormat("Cannot use the name of this object");
+                    objectName = "[" + "NAME_LESS" + "]";
+                }
+                else
+                {
+                    objectName = "[" + unityObject.name + "]";
+                }
+            }
+            else
+            {
+                objectName = "[" + caller + "]";
+            }
+
             var prefix = GetPrefix(logLevel);
             var color = GetColor(logLevel);
 
