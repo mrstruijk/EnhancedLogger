@@ -14,14 +14,14 @@ namespace mrstruijk.EnhancedLogger
     /// </summary>
     public static class Log
     {
-        public const string ErrorPrefix = "[!ERROR!]";
+        private const string ErrorPrefix = "[!ERROR!]";
         private const string WarningPrefix = "[WARNING]";
         private const string DebugPrefix = "<DEBUG>";
         private const string SuccessPrefix = "";
         private const string InfoPrefix = "";
 
         private const string ErrorColor = "red";
-        public const string WarningColor = "yellow";
+        private const string WarningColor = "yellow";
         private const string DebugColor = "orange";
         private const string SuccessColor = "green";
         private const string InfoColor = "pink";
