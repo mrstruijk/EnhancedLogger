@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Runtime.CompilerServices;
 
 
 namespace mrstruijk.EnhancedLogger
@@ -75,35 +74,44 @@ namespace mrstruijk.EnhancedLogger
         /// <param name="logLevel"></param>
         /// <param name="caller"></param>
         /// <param name="message"></param>
-        private static void DoLog(
-            LogLevel logLevel,
-            object caller,
-            string message,
-            [CallerMemberName] string callerName = "",
-            [CallerFilePath] string filePath = "",
-            [CallerLineNumber] int lineNumber = 0)
+        private static void DoLog(LogLevel logLevel, object caller, params object[] message)
         {
             #if UNITY_EDITOR || DEVELOPMENT_BUILD
-                if (CurrentLogLevel < logLevel)
+            if (CurrentLogLevel < logLevel)
+            {
+                return;
+            }
+
+            var objectName = "";
+
+            if (caller is Object unityObject)
+            {
+                if (unityObject == null || string.IsNullOrEmpty(unityObject.name))
                 {
-                    return;
+                    UnityEngine.Debug.LogWarningFormat("Cannot use the name of this object");
+                    objectName = "[" + "NAME_LESS" + "]";
                 }
+                else
+                {
+                    objectName = "[" + unityObject.name + "]";
+                }
+            }
+            else
+            {
+                objectName = "[" + caller + "]";
+            }
 
-                string objectName = caller is Object unityObject && !string.IsNullOrEmpty(unityObject.name)
-                    ? $"[{unityObject.name}]"
-                    : $"[{caller}]";
+            var prefix = GetPrefix(logLevel);
+            var color = GetColor(logLevel);
 
-                string className = System.IO.Path.GetFileNameWithoutExtension(filePath);
-                string locationInfo = $"{className}.{callerName}:{lineNumber}";
+            if (!string.IsNullOrEmpty(prefix))
+            {
+                objectName = string.Concat(objectName, prefix);
+            }
 
-                string prefix = GetPrefix(logLevel);
-                string color = GetColor(logLevel);
-
-                UnityEngine.Debug.Log($"{objectName.Color(color)} [{locationInfo}] {prefix} : {message}\n");
+            UnityEngine.Debug.Log($"{objectName.Color(color)} : {string.Join(" : ", message)}\n");
             #endif
         }
-
-
 
 
         /// <summary>
@@ -112,17 +120,11 @@ namespace mrstruijk.EnhancedLogger
         /// </summary>
         /// <param name="caller"></param>
         /// <param name="message"></param>
-        /// <param name="callerName"></param>
-        /// <param name="filePath"></param>
-        /// <param name="lineNumber"></param>
-        public static void Error(this Object caller, 
-                                 [CallerMemberName] string callerName = "", 
-                                 [CallerFilePath] string filePath = "", 
-                                 [CallerLineNumber] int lineNumber = 0,
-                                 params object[] message)
+        public static void Error(this Object caller, params object[] message)
         {
-            DoLog(LogLevel.Error, caller, string.Join(" ", message), callerName, filePath, lineNumber);
+            DoLog(LogLevel.Error, caller, message);
         }
+
 
         /// <summary>
         ///     Designed for catastrophic level error-logging
@@ -130,18 +132,10 @@ namespace mrstruijk.EnhancedLogger
         /// </summary>
         /// <param name="caller"></param>
         /// <param name="message"></param>
-        /// <param name="callerName"></param>
-        /// <param name="filePath"></param>
-        /// <param name="lineNumber"></param>
-        public static void Error(string caller, 
-                                 [CallerMemberName] string callerName = "", 
-                                 [CallerFilePath] string filePath = "", 
-                                 [CallerLineNumber] int lineNumber = 0,
-                                 params object[] message)
+        public static void Error(string caller, params object[] message)
         {
-            DoLog(LogLevel.Error, caller, string.Join(" ", message), callerName, filePath, lineNumber);
+            DoLog(LogLevel.Error, caller, message);
         }
-
 
 
         /// <summary>
