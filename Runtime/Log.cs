@@ -78,7 +78,7 @@ namespace mrstruijk.EnhancedLogger
         private static void DoLog(
             LogLevel logLevel,
             object caller,
-            object[] message,
+            string message,
             [CallerMemberName] string callerName = "",
             [CallerFilePath] string filePath = "",
             [CallerLineNumber] int lineNumber = 0)
@@ -89,28 +89,20 @@ namespace mrstruijk.EnhancedLogger
                     return;
                 }
 
-                string objectName = "";
-
-                if (caller is Object unityObject)
-                {
-                    objectName = unityObject == null || string.IsNullOrEmpty(unityObject.name)
-                        ? "[NAME_LESS]"
-                        : $"[{unityObject.name}]";
-                }
-                else
-                {
-                    objectName = $"[{caller}]";
-                }
+                string objectName = caller is Object unityObject && !string.IsNullOrEmpty(unityObject.name)
+                    ? $"[{unityObject.name}]"
+                    : $"[{caller}]";
 
                 string className = System.IO.Path.GetFileNameWithoutExtension(filePath);
+                string locationInfo = $"{className}.{callerName}:{lineNumber}";
+
                 string prefix = GetPrefix(logLevel);
                 string color = GetColor(logLevel);
 
-                string locationInfo = $"{className}.{callerName}:{lineNumber}";
-
-                UnityEngine.Debug.Log($"{objectName.Color(color)} [{locationInfo}] : {string.Join(" : ", message)}\n");
+                UnityEngine.Debug.Log($"{objectName.Color(color)} [{locationInfo}] {prefix} : {message}\n");
             #endif
         }
+
 
 
 
@@ -120,9 +112,12 @@ namespace mrstruijk.EnhancedLogger
         /// </summary>
         /// <param name="caller"></param>
         /// <param name="message"></param>
-        public static void Error(this Object caller, params object[] message)
+        public static void Error(this Object caller, string message, 
+                                 [CallerMemberName] string callerName = "", 
+                                 [CallerFilePath] string filePath = "", 
+                                 [CallerLineNumber] int lineNumber = 0)
         {
-            DoLog(LogLevel.Error, caller, message);
+            DoLog(LogLevel.Error, caller, message, callerName, filePath, lineNumber);
         }
 
 
@@ -132,9 +127,12 @@ namespace mrstruijk.EnhancedLogger
         /// </summary>
         /// <param name="caller"></param>
         /// <param name="message"></param>
-        public static void Error(string caller, params object[] message)
+        public static void Error(string caller, string message, 
+                                 [CallerMemberName] string callerName = "", 
+                                 [CallerFilePath] string filePath = "", 
+                                 [CallerLineNumber] int lineNumber = 0)
         {
-            DoLog(LogLevel.Error, caller, message);
+            DoLog(LogLevel.Error, caller, message, callerName, filePath, lineNumber);
         }
 
 
