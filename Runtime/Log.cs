@@ -112,14 +112,17 @@ namespace mrstruijk.EnhancedLogger
         /// </summary>
         /// <param name="caller"></param>
         /// <param name="message"></param>
-        public static void Error(this Object caller, string message, 
+        /// <param name="callerName"></param>
+        /// <param name="filePath"></param>
+        /// <param name="lineNumber"></param>
+        public static void Error(this Object caller, 
                                  [CallerMemberName] string callerName = "", 
                                  [CallerFilePath] string filePath = "", 
-                                 [CallerLineNumber] int lineNumber = 0)
+                                 [CallerLineNumber] int lineNumber = 0,
+                                 params object[] message)
         {
-            DoLog(LogLevel.Error, caller, message, callerName, filePath, lineNumber);
+            DoLog(LogLevel.Error, caller, string.Join(" ", message), callerName, filePath, lineNumber);
         }
-
 
         /// <summary>
         ///     Designed for catastrophic level error-logging
@@ -127,10 +130,18 @@ namespace mrstruijk.EnhancedLogger
         /// </summary>
         /// <param name="caller"></param>
         /// <param name="message"></param>
-        public static void Error(string caller, params object[] message)
+        /// <param name="callerName"></param>
+        /// <param name="filePath"></param>
+        /// <param name="lineNumber"></param>
+        public static void Error(string caller, 
+                                 [CallerMemberName] string callerName = "", 
+                                 [CallerFilePath] string filePath = "", 
+                                 [CallerLineNumber] int lineNumber = 0,
+                                 params object[] message)
         {
-            DoLog(LogLevel.Error, caller, message);
+            DoLog(LogLevel.Error, caller, string.Join(" ", message), callerName, filePath, lineNumber);
         }
+
 
 
         /// <summary>
