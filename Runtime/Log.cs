@@ -74,7 +74,13 @@ namespace mrstruijk.EnhancedLogger
         /// <param name="logLevel"></param>
         /// <param name="caller"></param>
         /// <param name="message"></param>
-        private static void DoLog(LogLevel logLevel, object caller, params object[] message)
+        private static void DoLog(
+            LogLevel logLevel, 
+            object caller, 
+            object[] message,
+            [CallerMemberName] string callerName = "", 
+            [CallerFilePath] string filePath = "", 
+            [CallerLineNumber] int lineNumber = 0)
         {
             #if UNITY_EDITOR || DEVELOPMENT_BUILD
             if (CurrentLogLevel < logLevel)
@@ -82,14 +88,14 @@ namespace mrstruijk.EnhancedLogger
                 return;
             }
 
-            var objectName = "";
+            string objectName = "";
 
             if (caller is Object unityObject)
             {
                 if (unityObject == null || string.IsNullOrEmpty(unityObject.name))
                 {
                     UnityEngine.Debug.LogWarningFormat("Cannot use the name of this object");
-                    objectName = "[" + "NAME_LESS" + "]";
+                    objectName = "[NAME_LESS]";
                 }
                 else
                 {
@@ -101,15 +107,16 @@ namespace mrstruijk.EnhancedLogger
                 objectName = "[" + caller + "]";
             }
 
-            var prefix = GetPrefix(logLevel);
-            var color = GetColor(logLevel);
+            string className = System.IO.Path.GetFileNameWithoutExtension(filePath);
+            string prefix = GetPrefix(logLevel);
+            string color = GetColor(logLevel);
 
             if (!string.IsNullOrEmpty(prefix))
             {
                 objectName = string.Concat(objectName, prefix);
             }
 
-            UnityEngine.Debug.Log($"{objectName.Color(color)} : {string.Join(" : ", message)}\n");
+            UnityEngine.Debug.Log($"{objectName.Color(color)} [{className}.{callerName}:{lineNumber}] : {string.Join(" : ", message)}\n");
             #endif
         }
 
