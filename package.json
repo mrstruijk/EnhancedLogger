@@ -1,6 +1,6 @@
 {
   "name": "com.mrstruijk.enhancedlogger",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "displayName": "Enhanced Logger",
   "description": "This is a package that enhances the Unity Debug.Log() function.",
   "unity": "2021.3",
