@@ -127,12 +127,9 @@ namespace mrstruijk.EnhancedLogger
         /// </summary>
         /// <param name="caller"></param>
         /// <param name="message"></param>
-        public static void Error(string caller, string message, 
-                                 [CallerMemberName] string callerName = "", 
-                                 [CallerFilePath] string filePath = "", 
-                                 [CallerLineNumber] int lineNumber = 0)
+        public static void Error(string caller, params object[] message)
         {
-            DoLog(LogLevel.Error, caller, message, callerName, filePath, lineNumber);
+            DoLog(LogLevel.Error, caller, message);
         }
 
 
