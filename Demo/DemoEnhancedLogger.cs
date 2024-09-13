@@ -1,4 +1,4 @@
-using mrstruijk.EnhancedLogger;
+using SOSXR.EnhancedLogger;
 using UnityEngine;
 
 
