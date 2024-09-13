@@ -1,5 +1,5 @@
-using SOSXR.EnhancedLogger;
 using NUnit.Framework;
+using SOSXR.EnhancedLogger;
 using UnityEngine;
 using UnityEngine.TestTools;
 

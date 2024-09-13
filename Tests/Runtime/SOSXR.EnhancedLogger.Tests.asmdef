@@ -1,10 +1,10 @@
 {
-    "name": "EnhancedLogger.RuntimeTests",
+    "name": "SOSXR.EnhancedLogger.Tests",
     "rootNamespace": "",
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
-        "EnhancedLogger"
+        "SOSXR.EnhancedLogger"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
