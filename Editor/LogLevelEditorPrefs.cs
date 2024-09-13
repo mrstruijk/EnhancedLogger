@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 
 
-namespace mrstruijk.EnhancedLogger
+namespace SOSXR.EnhancedLogger
 {
     /// <summary>
     ///     This class makes the Current Log Level persist between Play sessions.

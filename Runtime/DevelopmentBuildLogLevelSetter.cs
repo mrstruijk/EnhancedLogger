@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-namespace mrstruijk.EnhancedLogger
+namespace SOSXR.EnhancedLogger
 {
     /// <summary>
     ///     Add this to a GameObject if you want to set the log level in a Development Build to something else than Debug.

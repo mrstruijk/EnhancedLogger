@@ -1,4 +1,4 @@
-namespace mrstruijk.EnhancedLogger
+namespace SOSXR.EnhancedLogger
 {
     /// <summary>
     ///     Debug is by default the shown log level in the Editor and Development Build, thereby including also Error and

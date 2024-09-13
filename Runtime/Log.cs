@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-namespace mrstruijk.EnhancedLogger
+namespace SOSXR.EnhancedLogger
 {
     /// <summary>
     ///     This is a simple logger that can be used to log different types of messages
