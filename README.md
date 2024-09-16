@@ -1,5 +1,12 @@
 # EnhancedLogger
 
+
+- By: Maarten R. Struijk Wilbrink
+- For: Leiden University SOSXR
+- Fully open source: Feel free to add to, or modify, anything you see fit.
+
+
+
 A utility class for logging messages with customizable log levels and colors in Unity.
 
 ## Table of Contents
@@ -89,5 +96,5 @@ If you find any issues or have suggestions for improvements, feel free to open a
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+Under the GNU General Public License v3.0. See the [LICENSE](LICENSE) file for more information.
 Feel free to modify the content based on your project's specifics, and add any additional sections or information as needed.
