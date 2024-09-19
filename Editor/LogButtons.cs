@@ -13,12 +13,12 @@ namespace SOSXR.EnhancedLogger
     [ExecuteAlways]
     public class LogButtons : MonoBehaviour
     {
-        private const float buttonWidth = 80f;
-        private const float buttonHeight = 20f;
-        private const float margin_hor = 25;
-        private const float margin_vert = 50;
-        private const int buttonCount = 6;
-        private const string menuPath = "Logging/";
+        private const string _menuPath = "SOSXR/EnhancedLogger/";
+        private const float _buttonWidth = 80f;
+        private const float _buttonHeight = 20f;
+        private const float _margin_hor = 25;
+        private const float _margin_vert = 50;
+        private const int _buttonCount = 6;
 
 
         [InitializeOnLoadMethod]
@@ -37,10 +37,10 @@ namespace SOSXR.EnhancedLogger
 
             // Calculate the position for the buttons in the bottom-right corner
             var verticalButtonRect = new Rect(
-                sceneViewSize.x - (buttonWidth + margin_hor),
-                sceneViewSize.y - (buttonHeight * buttonCount + margin_vert),
-                buttonWidth + margin_hor,
-                buttonHeight * buttonCount + margin_vert
+                sceneViewSize.x - (_buttonWidth + _margin_hor),
+                sceneViewSize.y - (_buttonHeight * _buttonCount + _margin_vert),
+                _buttonWidth + _margin_hor,
+                _buttonHeight * _buttonCount + _margin_vert
             );
 
             GUILayout.BeginArea(verticalButtonRect);
@@ -94,7 +94,7 @@ namespace SOSXR.EnhancedLogger
                 GUI.backgroundColor = Color.green; // Highlight the selected button with a different color
             }
 
-            var result = GUILayout.Button(text, GUILayout.Width(buttonWidth), GUILayout.Height(buttonHeight));
+            var result = GUILayout.Button(text, GUILayout.Width(_buttonWidth), GUILayout.Height(_buttonHeight));
 
             if (isSelected)
             {
@@ -108,7 +108,7 @@ namespace SOSXR.EnhancedLogger
         /// <summary>
         ///     Chose if you want NO logs shown.
         /// </summary>
-        [MenuItem(menuPath + nameof(None))]
+        [MenuItem(_menuPath + nameof(None))]
         private static void None()
         {
             Log.CurrentLogLevel = LogLevel.None;
@@ -119,7 +119,7 @@ namespace SOSXR.EnhancedLogger
         /// <summary>
         ///     Chose if you ONLY want Error logs shown.
         /// </summary>
-        [MenuItem(menuPath + nameof(Error))]
+        [MenuItem(_menuPath + nameof(Error))]
         private static void Error()
         {
             Log.CurrentLogLevel = LogLevel.Error;
@@ -130,7 +130,7 @@ namespace SOSXR.EnhancedLogger
         /// <summary>
         ///     Choose if you want both Warning and Error logs shown.
         /// </summary>
-        [MenuItem(menuPath + nameof(Warning))]
+        [MenuItem(_menuPath + nameof(Warning))]
         private static void Warning()
         {
             Log.CurrentLogLevel = LogLevel.Warning;
@@ -141,7 +141,7 @@ namespace SOSXR.EnhancedLogger
         /// <summary>
         ///     Choose if you want Debug, Warning, and Error logs shown.
         /// </summary>
-        [MenuItem(menuPath + nameof(Debug))]
+        [MenuItem(_menuPath + nameof(Debug))]
         private static void Debug()
         {
             Log.CurrentLogLevel = LogLevel.Debug;
@@ -152,7 +152,7 @@ namespace SOSXR.EnhancedLogger
         /// <summary>
         ///     Choose if you want Success, Debug, Warning, and Error logs shown.
         /// </summary>
-        [MenuItem(menuPath + nameof(Success))]
+        [MenuItem(_menuPath + nameof(Success))]
         private static void Success()
         {
             Log.CurrentLogLevel = LogLevel.Success;
@@ -163,7 +163,7 @@ namespace SOSXR.EnhancedLogger
         /// <summary>
         ///     Choose if you want to see ALL logs. This is Info, Success, Debug, Warning, and Error logs.
         /// </summary>
-        [MenuItem(menuPath + nameof(Info))]
+        [MenuItem(_menuPath + nameof(Info))]
         private static void Info()
         {
             Log.CurrentLogLevel = LogLevel.Info;

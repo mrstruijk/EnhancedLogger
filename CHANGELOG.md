@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 The changelog format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
+## [1.0.3] - 2024-09-19
+
+
+### Added
+
+-
+
+### Fixed
+
+-
+
+### Changed
+
+- Moved Menu Items to SOSXR/EnhancedLogger/
+- Case change in LogButtons.cs
+
+### Removed
+
+-
+
+
 
 ## [1.0.2] - 2024-09-13
 
