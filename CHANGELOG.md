@@ -10,6 +10,9 @@ The changelog format is based on [Keep a Changelog](https://keepachangelog.com/e
 
 - Fixed error where the demo scripts gave warning for not being included into an assembly
 
+### Changed
+
+- Updated the README.md
 
 
 ## [1.0.3] - 2024-09-19
