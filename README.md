@@ -31,10 +31,11 @@ This Unity package provides a flexible and customizable logging utility named `L
 - Log messages with various log levels, thereby suppressing ones you don't want to see.
 - Customize log message appearance with colors (if you've cloned the project instead of using the package manager, you can change the colors in the `Log.cs` file).
 - Unity Editor and Development Build aware. It will suppress your logs in a production build, making it a cheap solution for logging, and the best of both worlds: all the logging you could want in development, and none of the overhead in production.
-- Click to go to the source of the log message (although not perfect, see Downsides).
+- Click to go to the source of the log message, both the GameObject where the call came from, and the code + line number it is referring to (although not perfect, see Downsides)
 
 ## Downsides
 -  Unfortunately you can't click on the log message itself, but you can click on the second line of the log to go to the line number in the class (Otherwise you'll go to the `Log.cs` class instead). The first lines in the Console are reserved for the Log utility. Not so handy when you want to click to the code that generated the log message. If you know how to fix this, please let me know.
+- It can only find the GameObject that called the Log message if it is a MonoBehaviour. If you call the `Log` directly (as you would in a static class for instance), it will not be able to click to find the GameObject.
 - You need to copy the Demo files into your normal Asset folder to use the Demo scene. See [this explanation here as to why](https://forum.unity.com/threads/it-is-not-allowed-to-open-a-scene-in-a-read-only-package-why.1148036/).
 
 ## Installation
@@ -55,13 +56,19 @@ If you prefer manual installation (also allowing you more customizability), clon
 ## Usage
 
 ### Log Levels
-In the Scene view, select the LogLevel you want to use. This will determine which log messages are displayed in the Console. It shows the logs of the selected LogLevel and all logs with a higher LogLevel. For example, if you select `Warning`, you will only see `Warning`, and `Error` logs. Selecting `Info` will show all logs. The default LogLevel is `Debug` (showing `Debug`, `Warning`, and `Error` logs).
+It shows the logs of the selected LogLevel and all logs with a higher LogLevel. For example, if you select `Warning`, you will only see `Warning`, and `Error` logs. Selecting `Info` will show all logs. The default LogLevel is `Debug` (showing `Debug`, `Solid`, `Warning`, and `Error` logs).
+
+`Solid` (will be renamed later) is for any messages that are more akin to `Info`, but that you want to display with a much higher prominence. It is placed between `Debug` and `Warning` in the hierarchy. With `Info` there's oto many other messages that are displaying, while a `Warning` is often also not what I was looking for, since a lot of the messages were of things that were simply happening, without them needing to warn me of things.
+
+### Setting Log Levels
+In the Scene view, select the LogLevel you want to use. This will determine which log messages are displayed in the Console. It shows the logs of the selected LogLevel and all logs with a higher LogLevel. 
 
 Alternatively you can set the LogLevel in the Menu bar at SOSXR > EnhancedLogger.
 
 
 ### Log Messages
 To add logs to you scripts, see the example below, and the Demo folder for more examples.
+
 
 ```csharp
 using UnityEngine;
@@ -81,12 +88,16 @@ public class Example : MonoBehaviour
         // Another object could serve as well.   
         OtherGameObject.Success("This is a success message. It is called from another gameobject");
         
-        // These are useful when the object you're calling the Log from has been destroyed. Be careful with the second one, thay may cause a NullReferenceException anyway.
+        // These are useful when the object you're calling the Log from can be destroyed. Be careful with the second one, thay may cause a NullReferenceException anyway.
         Log.Info("Provide a name here", "This is an info message.");
         Log.Error(nameof(SomeObscureClass), "This is an error message.");
     }
 }
 ```
+
+It also works on static classes, or classes that are not derived from `MonoBehaviour`. Just use the `Log` class directly (e.g. `Log.Debug("This is a debug message.");`).
+
+
 
 ## Tests
 

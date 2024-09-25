@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -18,7 +20,7 @@ namespace SOSXR.EnhancedLogger
         private const float _buttonHeight = 20f;
         private const float _margin_hor = 25;
         private const float _margin_vert = 50;
-        private const int _buttonCount = 6;
+        private static readonly int _buttonCount = (int) Enum.GetValues(typeof(LogLevel)).Cast<LogLevel>().Last() + 1; // We want to get the Max count of the enum LogLevel.
 
 
         [InitializeOnLoadMethod]
@@ -60,6 +62,11 @@ namespace SOSXR.EnhancedLogger
             if (CreateButton(nameof(Warning)))
             {
                 Warning();
+            }
+            
+            if (CreateButton(nameof(Solid)))
+            {
+                Solid();
             }
 
             if (CreateButton(nameof(Debug)))
@@ -137,6 +144,17 @@ namespace SOSXR.EnhancedLogger
             LogLevelEditorPrefs.SaveLogLevel();
         }
 
+        /// <summary>
+        ///     Choose if you want both Warning and Error logs shown.
+        /// </summary>
+        [MenuItem(_menuPath + nameof(Solid))]
+        private static void Solid()
+        {
+            Log.CurrentLogLevel = LogLevel.Solid;
+            LogLevelEditorPrefs.SaveLogLevel();
+        }
+
+        
 
         /// <summary>
         ///     Choose if you want Debug, Warning, and Error logs shown.

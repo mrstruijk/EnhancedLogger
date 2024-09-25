@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 The changelog format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 
+## [1.1.0] - 2024-09-25
+
+### Added
+
+- New loglevel called 'Solid', just between Debug and Warning
+- Clickable GameObjects from the Console based on [Warped Imagination](https://youtu.be/wykshtqwZSA?si=jMmUvg-NVEAgZzhY)
+
+### Changed
+
+- Updated the README.md
+
+
 ## [1.0.4] - 2024-09-24
 
 ### Fixed

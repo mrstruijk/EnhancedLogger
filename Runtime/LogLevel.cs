@@ -9,6 +9,7 @@ namespace SOSXR.EnhancedLogger
         None,
         Error,
         Warning,
+        Solid,
         Debug,
         Success,
         Info

@@ -14,18 +14,21 @@ namespace SOSXR.EnhancedLogger
     /// </summary>
     public static class Log
     {
-        private const string ErrorPrefix = "[!ERROR!]";
-        private const string WarningPrefix = "[WARNING]";
+        private const string ErrorPrefix = "<b>[!ERROR!]</b>";
+        private const string WarningPrefix = "<b>[WARNING]</b>";
+        private const string SolidPrefix = "";
         private const string DebugPrefix = "<DEBUG>";
         private const string SuccessPrefix = "";
         private const string InfoPrefix = "";
 
         private const string ErrorColor = "red";
         private const string WarningColor = "yellow";
+        private const string SolidColor = "lightblue";
         private const string DebugColor = "orange";
         private const string SuccessColor = "green";
         private const string InfoColor = "pink";
 
+        
         public static LogLevel CurrentLogLevel = LogLevel.Debug;
 
 
@@ -109,7 +112,7 @@ namespace SOSXR.EnhancedLogger
                 objectName = string.Concat(objectName, prefix);
             }
 
-            UnityEngine.Debug.Log($"{objectName.Color(color)} : {string.Join(" : ", message)}\n");
+            UnityEngine.Debug.Log($"{objectName.Color(color)} : {string.Join(" : ", message)}\n", caller as Object);
             #endif
         }
 
